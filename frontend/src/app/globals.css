@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap");
+@import "tailwindcss";
+
+/* =============================================
+   DYNAMIC SOLUTION CLASSES — DESIGN SYSTEM
+   Tailwind v4 CSS-based token configuration
+   ============================================= */
+
+
+
+@theme {
+  /* ─── Color Tokens ─────────────────────────── */
+  --color-primary-navy:   #0A1F44;
+  --color-primary-navy-dark: #061530;
+  --color-primary-navy-light: #132A5E;
+
+  --color-accent-gold:    #D4AF37;
+  --color-accent-gold-light: #E8C84A;
+  --color-accent-gold-dark:  #B8960E;
+
+  --color-offwhite:       #F8F9FA;
+  --color-trust-green:    #16A34A;
+  --color-trust-green-light: #22C55E;
+
+  /* ─── Typography ───────────────────────────── */
+  --font-heading: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* ─── Shadows ──────────────────────────────── */
+  --shadow-navy:  0 4px 24px rgba(10, 31, 68, 0.18);
+  --shadow-gold:  0 4px 24px rgba(212, 175, 55, 0.25);
+}
+
+/* ─── Base Styles ──────────────────────────────── */
+:root {
+  --background: #ffffff;
+  --foreground: #0A1F44;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
