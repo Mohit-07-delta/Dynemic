@@ -1,9 +1,9 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#home" },
+  { label: "Home",    href: "#home" },
   { label: "Courses", href: "#courses" },
   { label: "Results", href: "#results" },
   { label: "Gallery", href: "#gallery" },
@@ -11,8 +11,8 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled,  setScrolled]  = useState(false);
+  const [menuOpen,  setMenuOpen]  = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -20,8 +20,16 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close mobile menu on Escape
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMenuOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   return (
     <header
+      role="banner"
       style={{
         position: "fixed",
         top: 0,
@@ -35,6 +43,7 @@ export default function Navbar() {
       }}
     >
       <nav
+        aria-label="Main navigation"
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
@@ -46,7 +55,7 @@ export default function Navbar() {
         }}
       >
         {/* ── Logo ── */}
-        <a href="#home" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <a href="#home" aria-label="Dynamic Solution Classes — Home" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "0.5rem" }}>
           {/* Gold diamond accent */}
           <span
             style={{
@@ -154,7 +163,9 @@ export default function Navbar() {
         <button
           className="md:hidden"
           onClick={() => setMenuOpen((o) => !o)}
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
           style={{
             background: "none",
             border: "none",
@@ -191,6 +202,9 @@ export default function Navbar() {
 
       {/* ── Mobile Menu Dropdown ── */}
       <div
+        id="mobile-menu"
+        role="dialog"
+        aria-label="Navigation menu"
         style={{
           backgroundColor: "#0A1F44",
           overflow: "hidden",

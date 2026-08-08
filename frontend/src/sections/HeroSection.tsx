@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 
@@ -155,7 +155,7 @@ export default function HeroSection() {
           </p>
 
           {/* Stats Row */}
-          <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
+          <div className="hero-stats-row" style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
             {[
               { value: "500+", label: "Selections" },
               { value: "10+", label: "Yrs Experience" },
@@ -190,7 +190,7 @@ export default function HeroSection() {
           </div>
 
           {/* CTA Buttons */}
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", paddingTop: "0.5rem" }}>
+          <div className="hero-cta-row" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", paddingTop: "0.5rem" }}>
             {/* Primary — Gold */}
             <a
               href="#contact"
@@ -409,7 +409,7 @@ export default function HeroSection() {
       </div>
 
       {/* ── Scroll indicator ── */}
-      <div
+      <div aria-hidden="true"
         style={{
           position: "absolute",
           bottom: "2rem",
@@ -440,11 +440,25 @@ export default function HeroSection() {
         .hero-grid {
           grid-template-columns: 1fr 1fr;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
-            gap: 3rem !important;
-            padding-top: 6rem !important;
+            gap: 2.5rem !important;
+            padding-top: 6.5rem !important;
+            padding-bottom: 4rem !important;
+            text-align: center;
+          }
+          .hero-grid > div:last-child {
+            max-width: 380px;
+            margin: 0 auto;
+          }
+          .hero-stats-row { justify-content: center !important; }
+          .hero-cta-row   { justify-content: center !important; }
+        }
+        @media (max-width: 480px) {
+          .hero-grid {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
           }
         }
         @keyframes pulse {
