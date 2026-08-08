@@ -4,6 +4,7 @@ import HallOfFame from "@/sections/HallOfFame";
 import CoursesSection from "@/sections/CoursesSection";
 import GallerySection from "@/sections/GallerySection";
 import AdmissionForm from "@/sections/AdmissionForm";
+import Footer from "@/sections/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
@@ -15,7 +16,9 @@ export default function Home() {
       <CoursesSection />
       <GallerySection />
       <AdmissionForm />
+      <Footer />
       <WhatsAppButton />
     </main>
   );
 }
+
